@@ -35,6 +35,37 @@
     
     
     <entry>
+      <title>Product of Array Except Self in Blind 75 (4)</title>
+      <link href="/2022/09/01/Product_of_Array_Except_Self/"/>
+      <url>/2022/09/01/Product_of_Array_Except_Self/</url>
+      
+        <content type="html"><![CDATA[<h1><a href="https://leetcode.com/problems/product-of-array-except-self/">Product of Array Except Self</a></h1><h2 id="Description">Description</h2><p><font size= 3>Given an integer array <code>nums</code>, return an array answer such that <code>answer[i]</code> is equal to the product of all the elements of <code>nums</code> except <code>nums[i]</code>.</p><p>The product of any prefix or suffix of nums is <strong>guaranteed</strong> to fit in a <strong>32-bit integer</strong>.</p><p>You must write an algorithm that runs in O(n) time and without using the division operation.<br></font></p><h3 id="Example-1">Example 1</h3><blockquote><p><strong>Input:</strong> nums = [1,2,3,4]<br><strong>Output:</strong> [24,12,8,6]</p></blockquote><h3 id="Example-2">Example 2</h3><blockquote><p><strong>Input:</strong> nums = [-1,1,0,-3,3]<br><strong>Output:</strong> [0,0,9,0,0]</p></blockquote><h3 id="Constraints">Constraints</h3><ul><li>2 &lt;= nums.length &lt;= 10^5</li><li>-30 &lt;= nums[i] &lt;= 30</li><li>The product of any prefix or suffix of nums is <strong>guaranteed</strong> to fit in a <strong>32-bit integer</strong>.</li></ul><h2 id="Thoughts">Thoughts</h2><font size=3><p>we can use <strong>two vectors</strong> to store the product of the elements <strong>before and after</strong> the current element. Then we can iterate through the array and multiply the product of the elements before and after the current element to get the answer.<br></font></p><h2 id="Code">Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">productExceptSelf</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n=nums.<span class="hljs-built_in">size</span>();<br>        vector &lt;<span class="hljs-type">int</span>&gt; <span class="hljs-built_in">v1</span>(n,<span class="hljs-number">1</span>),<span class="hljs-built_in">v2</span>(n,<span class="hljs-number">1</span>),<span class="hljs-built_in">ans</span>(n);<span class="hljs-comment">//n為長度,第二位為初值,未有第二位皆為0</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;++i)&#123;<br>            v1[i]=v1[i<span class="hljs-number">-1</span>]*nums[i<span class="hljs-number">-1</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n<span class="hljs-number">-2</span>;i&gt;=<span class="hljs-number">0</span>;--i)&#123;<br>            v2[i]=v2[i+<span class="hljs-number">1</span>]*nums[i+<span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;++i)&#123;<br>            ans[i]=v1[i]*v2[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="Tips-Concepts">Tips &amp; Concepts</h2><font size=3><ol><li><code>vector&lt;int&gt; v1(10);</code> 產生一個長度為10的vector，並且初始化為0</li><li><code>vector&lt;int&gt; v2(10, 1);</code> 產生一個長度為10的vector，並且初始化為1</li><li><code>vector&lt;int&gt; v3=&#123;10,20,30,40,50&#125;;/n vector&lt;int&gt; v4(v3);</code> 以 v3 作為引數來建構 v4</li><li><code>vector&lt;int&gt; v5(v3.begin(),v3.begin()+2);</code> 以 v3 的前兩個元素來建構 v5</li></ol><blockquote><p>v3.begin()+2 代表從 v3 的第 0 個元素開始，取 2 個元素(第三個不算)</p></blockquote><ol start="5"><li><code>vector&lt;int&gt; v6(v3.end()-2,v3.end());</code> 以 v3 的後兩個元素來建構 v6<br></font></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode(medium) </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Blind 75 </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> vector </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>f-string的獨特性</title>
       <link href="/2022/02/23/f_string/"/>
       <url>/2022/02/23/f_string/</url>
