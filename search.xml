@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>Maximum Subarray in Blind 75 (5)</title>
+      <link href="/2022/09/04/Maximum_Subarray/"/>
+      <url>/2022/09/04/Maximum_Subarray/</url>
+      
+        <content type="html"><![CDATA[<h1><a href="https://leetcode.com/problems/maximum-subarray/">Maximum Subarray</a></h1><h2 id="Description">Description</h2><font size= 3><p>Given an integer array <code>nums</code>, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p></font><h3 id="Example-1">Example 1</h3><blockquote><p><strong>Input:</strong> nums = [-2,1,-3,4,-1,2,1,-5,4]<br><strong>Output:</strong> 6<br><strong>Explanation:</strong> [4,-1,2,1] has the largest sum = 6.</p></blockquote><h3 id="Example-2">Example 2</h3><blockquote><p><strong>Input:</strong> nums = [1]<br><strong>Output:</strong> 1</p></blockquote><h3 id="Example-3">Example 3</h3><blockquote><p><strong>Input:</strong> nums = [5,4,-1,7,8]<br><strong>Output:</strong> 23</p></blockquote><h3 id="Constraints">Constraints</h3><ul><li>1 &lt;= nums.length &lt;= 3 * 10^4</li><li>-10^5 &lt;= nums[i] &lt;= 10^5</li></ul><h2 id="Thoughts">Thoughts</h2><font size=3><p>Use <strong>simple DP</strong> to solve this problem. The key is to find the relationship between the current element and the previous element.</p><ol><li>In local_max, we can either <strong>add the current element(nums[i]) to the previous element(local_max)</strong> or just use the <strong>current element(nums[i])</strong>.</li></ol><blockquote><ul><li>if we add the current element to the previous element,it represents that we are <strong>still in the same subarray</strong>,and <strong>the current element is the last</strong> element of the subarray.</li><li>if we just use the current element, it represents that we are starting a <strong>new</strong> subarray.</li></ul></blockquote><ol start="2"><li>In global_max,to get the maximum subarray, we just need to compare the current local_max with the previous global_max.</li></ol><blockquote><p>complexity: O(n)</p></blockquote></font><h2 id="Code">Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> global_max=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> local_max=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;nums.<span class="hljs-built_in">size</span>();++i)&#123;<br>            local_max=<span class="hljs-built_in">max</span>(nums[i],nums[i]+local_max);<br>            global_max=<span class="hljs-built_in">max</span>(global_max,local_max);<br>        &#125;<br>        <span class="hljs-keyword">return</span> global_max;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="Discussion">Discussion</h2><font size=3><ol><li><p>Determine nums[i] is suitable for being the first number。如果max()選了nums[i]，代表i這個位置適合當第一位數字;如果選了nums[i]+local_max，代表可延續下去，這時的nums[i]為答案陣列的第二位。</p></li><li><p>If last number is negative,the local_max will choose to be in the same array,so original sum will be smaller.Thus,we need to have the global_max to compare with the local_max.</p></li></ol></font><h2 id="Tips-Concepts">Tips &amp; Concepts</h2><font size=3><p><strong>Array=[-2,-3,4,-1,-2,1,5,-3]</strong></p><p><img src="https://pic.pimg.tw/englishandcoding/1617088891-3651658396-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089088-3111889534-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089144-449473356-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089219-2210077352-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089266-3821566684-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089318-1843440720-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089370-2526557864-g_n.png" alt=""><br><img src="https://pic.pimg.tw/englishandcoding/1617089449-53258162-g_n.png" alt=""><br></font></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode(medium) </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Blind 75 </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Maximum Product Subarray in Blind 75 (6)</title>
+      <link href="/2022/09/04/Maximum_Product_Subarray/"/>
+      <url>/2022/09/04/Maximum_Product_Subarray/</url>
+      
+        <content type="html"><![CDATA[<h1><a href="https://leetcode.com/problems/maximum-product-subarray/">Maximum Product Subarray</a></h1><h2 id="Description-2">Description</h2><font size= 3><p>Given an integer array <code>nums</code> , find a contiguous non-empty subarray within the array that has the largest product, and return the <strong>product</strong>.</p></font><h3 id="Example-1-2">Example 1</h3><blockquote><p><strong>Input:</strong> nums = [2,3,-2,4]<br><strong>Output:</strong> 6<br><strong>Explanation:</strong> [2,3] has the largest product 6.</p></blockquote><h3 id="Example-2-2">Example 2</h3><blockquote><p><strong>Input:</strong> nums = [-2,0,-1]<br><strong>Output:</strong> 0<br><strong>Explanation:</strong> The result cannot be 2, because [-2,-1] is not a subarray.</p></blockquote><h3 id="Constraints-2">Constraints</h3><ul><li>1 &lt;= nums.length &lt;= 2 * 10^4</li><li>-10 &lt;= nums[i] &lt;= 10</li><li>The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.</li></ul><h2 id="Thoughts-2">Thoughts</h2><font size=3><p>Use simple DP to solve this problem. The key is to find the relationship between the current element and the previous element.<strong>If we met a negative number, we need to swap the max and min.</strong><br></font></p><h2 id="Code-2">Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxProduct</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> local_max=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> local_min=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> global_max=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> n=nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;++i)&#123;<br>            <span class="hljs-keyword">if</span>(nums[i]&lt;<span class="hljs-number">0</span>)   <span class="hljs-built_in">swap</span>(local_max,local_min);<br>            local_min=<span class="hljs-built_in">min</span>(nums[i],nums[i]*local_min);<span class="hljs-comment">//3 -12 -48 for array [2,3,-2,4]</span><br>            local_max=<span class="hljs-built_in">max</span>(nums[i],nums[i]*local_max);<span class="hljs-comment">//6 -2 4 </span><br>            global_max=<span class="hljs-built_in">max</span>(local_max,global_max);<span class="hljs-comment">//6 6</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> global_max;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="Discussion-2">Discussion</h2><font size=3><p>Similar to <a href="https://choanlee.github.io/2022/09/04/Maximum_Subarray/">Maximum Subarray</a><br></font></p><h2 id="Tips-Concepts-2">Tips &amp; Concepts</h2><font size=3><ol><li>std::swap (No return value)</li></ol><blockquote><p>swap(a,b) 該函數接受兩個必須交換的必需參數a和b。參數可以是任何數據類型(int , string…)。<br></font></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode(emedium) </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Blind 75 </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Two Sum in Blind 75 (1)</title>
       <link href="/2022/09/01/Two_Sum/"/>
       <url>/2022/09/01/Two_Sum/</url>
