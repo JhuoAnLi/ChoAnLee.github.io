@@ -35,6 +35,37 @@
     
     
     <entry>
+      <title>Search in Rotated Sorted Array in Blind 75 (8)</title>
+      <link href="/2022/09/07/Search_in_Rotated_Sorted_Array/"/>
+      <url>/2022/09/07/Search_in_Rotated_Sorted_Array/</url>
+      
+        <content type="html"><![CDATA[<h1><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/">Search in Rotated Sorted Array</a></h1><h2 id="Description">Description</h2><font size= 3><p>There is an integer array <code>nums</code> sorted in ascending order (with <strong>distinct</strong> values).</p><p>Prior to being passed to your function, <code>nums</code> is <strong>rotated</strong> at an unknown pivot index <code>k</code> (<code>0 &lt;= k &lt; nums.length</code>) such that the resulting array is <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code> (0-indexed). For example, <code>[0,1,2,4,5,6,7]</code> might be rotated at pivot index <code>3</code> and become <code>[4,5,6,7,0,1,2]</code>.</p><p>Given the array <code>nums</code> <strong>after</strong> the rotation and an integer <code>target</code>, return <em>the index of <code>target</code> if it is in <code>nums</code>, or <code>-1</code> if it is not in <code>nums</code></em>.</p><p>You must write an algorithm with <code>O(log n)</code> runtime complexity.<br></font></p><h3 id="Example-1">Example 1</h3><blockquote><p><strong>Input:</strong> nums = [4,5,6,7,0,1,2], target = 0<br><strong>Output:</strong> 4</p></blockquote><h3 id="Example-2">Example 2</h3><blockquote><p><strong>Input:</strong> nums = [4,5,6,7,0,1,2], target = 3<br><strong>Output:</strong> -1</p></blockquote><h3 id="Example-3">Example 3</h3><blockquote><p><strong>Input:</strong> nums = [1], target = 0<br><strong>Output:</strong> -1</p></blockquote><h3 id="Constraints">Constraints</h3><ul><li>1 &lt;= nums.length &lt;= 5000</li><li>-10^4 &lt;= nums[i] &lt;= 10^4</li><li>All values of <code>nums</code> are <strong>unique</strong>.</li><li><code>nums</code> is an ascending array that is possibly rotated.</li><li>-10^4 &lt;= target &lt;= 10^4</li></ul><h2 id="Thoughts">Thoughts</h2><font size=3><p>Use map to store the index of each element in the array, and then use the map to find the index of the target element.</p></font><h2 id="Code">Code</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">search</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> target)</span> </span>&#123;<br>        map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;mymap;<br>        <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> min=nums[<span class="hljs-number">0</span>];<br>        <span class="hljs-type">int</span> ans=<span class="hljs-number">5001</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; s : nums)&#123;<br><br>            mymap[s]=i;<br>            i++;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> h=<span class="hljs-number">1</span>;h&lt;nums.<span class="hljs-built_in">size</span>();++h)&#123;<br>            <span class="hljs-keyword">if</span>(nums[h]&lt;min) min=nums[h];<br>        &#125;<br>        <br>         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> itr=mymap.<span class="hljs-built_in">find</span>(min);itr!=mymap.<span class="hljs-built_in">end</span>();++itr)&#123;<br>             <span class="hljs-keyword">if</span>(itr-&gt;first==target)  ans=itr-&gt;second;<br>             <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>         &#125;<br>        <span class="hljs-keyword">if</span>(ans==<span class="hljs-number">5001</span>)   <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure><h2 id="Tips-Concepts">Tips &amp; Concepts</h2><font size=3><p>for the map, we can use the find() function to find the element in the map, and then use the iterator to find the index of the element.</p><blockquote><p><strong>auto itr=mymap.find(min);</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> itr=mymap.<span class="hljs-built_in">find</span>(min);itr!=mymap.<span class="hljs-built_in">end</span>();++itr)&#123;<br>    <span class="hljs-keyword">if</span>(itr-&gt;first==target)  ans=itr-&gt;second;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">continue</span>;<br>&#125;<br></code></pre></td></tr></table></figure></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode(medium) </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Blind 75 </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> Array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Maximum Subarray in Blind 75 (5)</title>
       <link href="/2022/09/04/Maximum_Subarray/"/>
       <url>/2022/09/04/Maximum_Subarray/</url>
